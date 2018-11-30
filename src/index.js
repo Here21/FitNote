@@ -1,10 +1,8 @@
 import React from 'react';
-import Route from './router';
-
 import ReactDOM from 'react-dom';
-import './styles/index.css';
+import Route from './router';
+import './styles/base.css';
 import * as serviceWorker from './serviceWorker';
-
 
 const render = Component => {
   ReactDOM.render(<Component />, document.getElementById('root'))
