@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Route from './router';
+import 'typeface-roboto';
 import './styles/base.css';
 import * as serviceWorker from './serviceWorker';
 

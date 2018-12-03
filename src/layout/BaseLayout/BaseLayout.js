@@ -14,7 +14,6 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core';
-
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -22,8 +21,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import withRoot from '../../withRoot';
 import styles from './styles';
 import {Redirect, Route, Switch} from "react-router-dom";
-import Actions from "../../pages/Actions/Actions";
-import Home from "../../pages/Home/Home";
+import ActionsPage from "../../pages/ActionsPage";
+import HomePage from "../../pages/HomePage";
 
 class BaseLayout extends React.Component {
   state = {
@@ -43,6 +42,7 @@ class BaseLayout extends React.Component {
   };
 
   render() {
+    console.log(1111);
     const { classes, theme } = this.props;
     const { open } = this.state;
 
@@ -98,8 +98,8 @@ class BaseLayout extends React.Component {
         </Drawer>
         <div className={classes.content}>
           <Switch>
-            <Route path="/home" component={Home} />
-            <Route path="/actions" exact component={Actions} />
+            <Route path="/home" component={HomePage} />
+            <Route path="/actions" component={ActionsPage} />
             <Redirect to="/home" />
           </Switch>
         </div>
