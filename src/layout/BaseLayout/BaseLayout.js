@@ -23,6 +23,7 @@ import styles from './styles';
 import {Redirect, Route, Switch} from "react-router-dom";
 import ActionsPage from "../../pages/ActionsPage";
 import HomePage from "../../pages/HomePage";
+import TrainingPage from "../../pages/TrainingPage";
 
 class BaseLayout extends React.Component {
   state = {
@@ -37,12 +38,13 @@ class BaseLayout extends React.Component {
     this.setState({ open: false });
   };
 
-  handleClick = () => {
-    console.log('click');
+  handleNavigate = (path) => {
+    let { history } = this.props;
+    history.push(path);
+    this.handleDrawerClose();
   };
 
   render() {
-    console.log(1111);
     const { classes, theme } = this.props;
     const { open } = this.state;
 
@@ -82,17 +84,17 @@ class BaseLayout extends React.Component {
           </div>
           <Divider />
           <List>
-            <ListItem button onClick={this.handleClick}>
+            <ListItem button onTouchEnd={() => this.handleNavigate('/home')}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={'训练历程'} />
             </ListItem>
-            <ListItem button>
+            <ListItem button onTouchEnd={() => this.handleNavigate('/actions')}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={'动作库'} />
             </ListItem>
-            <ListItem button>
+            <ListItem button onTouchEnd={() => this.handleNavigate('/training')}>
               <ListItemIcon><InboxIcon /></ListItemIcon>
-              <ListItemText primary={'准备'} />
+              <ListItemText primary={'训练'} />
             </ListItem>
           </List>
         </Drawer>
@@ -100,6 +102,7 @@ class BaseLayout extends React.Component {
           <Switch>
             <Route path="/home" component={HomePage} />
             <Route path="/actions" component={ActionsPage} />
+            <Route path="/training" component={TrainingPage} />
             <Redirect to="/home" />
           </Switch>
         </div>
