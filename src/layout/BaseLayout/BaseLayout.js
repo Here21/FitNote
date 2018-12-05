@@ -24,6 +24,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import ActionsPage from "../../pages/ActionsPage";
 import HomePage from "../../pages/HomePage";
 import TrainingPage from "../../pages/TrainingPage";
+import ActionEditor from "../../pages/ActionsPage/ActionEditor";
 
 class BaseLayout extends React.Component {
   state = {
@@ -101,7 +102,9 @@ class BaseLayout extends React.Component {
         <div className={classes.content}>
           <Switch>
             <Route path="/home" component={HomePage} />
-            <Route path="/actions" component={ActionsPage} />
+            <Route path="/actions" exact component={ActionsPage} />
+            <Route path="/actions/add" component={ActionEditor} />
+            <Route path="/actions/:id" component={ActionsPage} />
             <Route path="/training" component={TrainingPage} />
             <Redirect to="/home" />
           </Switch>

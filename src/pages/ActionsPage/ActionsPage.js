@@ -4,9 +4,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import styles from './styles';
 
 class ActionsPage extends Component {
+  handleAdd = () => {
+    let { history } = this.props;
+    history.push('/actions/add');
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -21,9 +28,12 @@ class ActionsPage extends Component {
             </Typography>
           </div>
           <Button size="small" className={classes.margin}>
-            Small
+            加入训练
           </Button>
         </Paper>
+        <Fab color="secondary" aria-label="Add" className={classes.fab} onClick={this.handleAdd}>
+          <AddIcon />
+        </Fab>
       </div>
     );
   }
