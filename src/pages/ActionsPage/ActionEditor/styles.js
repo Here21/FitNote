@@ -4,20 +4,21 @@ const styles = theme => {
 
     },
     content: {
-      flexGrow: 1,
-      padding: theme.spacing.unit,
+      padding: theme.spacing.unit * 2,
       marginBottom: theme.spacing.unit * 2,
       display: 'flex',
       maxWidth: '400px',
       justifyContent: 'space-between',
       alignItems: 'center'
     },
-    fab: {
-      margin: theme.spacing.unit,
-      position: 'fixed',
-      bottom: theme.spacing.unit * 2,
-      right: theme.spacing.unit * 2
+    buttonGroup: {
+      display: 'flex',
+      justifyContent: 'flex-end'
     },
+    button: {
+      marginLeft: theme.spacing.unit * 2,
+      marginTop: theme.spacing.unit * 2,
+    }
   }};
 
 export default styles;
