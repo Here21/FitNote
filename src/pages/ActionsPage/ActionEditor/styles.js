@@ -18,6 +18,16 @@ const styles = theme => {
     button: {
       marginLeft: theme.spacing.unit * 2,
       marginTop: theme.spacing.unit * 2,
+    },
+    select: {
+      minWidth: '100px',
+      maxWidth: '180px'
+    },
+    recordRow: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      marginTop: theme.spacing.unit * 2
     }
   }};
 

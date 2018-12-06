@@ -11,7 +11,10 @@ import {
   MenuItem,
   FormGroup,
   FormControlLabel,
-  Checkbox
+  Checkbox,
+  FormLabel,
+  RadioGroup,
+  Radio
 } from '@material-ui/core';
 import _ from 'lodash';
 import styles from './styles';
@@ -21,12 +24,12 @@ class ActionEditor extends Component {
     name: '',
     desc: '',
     type: 1,
-    record: []
+    record: '1'
   };
   handleSubmit = (e) => {
     e.preventDefault();
   };
-  handleInputChange = (event) => {
+  handleChange = (event) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -34,16 +37,6 @@ class ActionEditor extends Component {
     this.setState({
       [name]: value
     });
-  };
-  handleSelectChange = (event) => {
-    const target = event.target;
-    const value = target.value;
-    const set = new Set(this.state.record);
-
-    set.has(value) ? set.delete(value) : set.add(value);
-    this.setState({
-      record: [...set]
-    })
   };
   render() {
     const { classes } = this.props;
@@ -58,7 +51,7 @@ class ActionEditor extends Component {
               required
               name={'name'}
               value={this.state.name}
-              onChange={this.handleInputChange}
+              onChange={this.handleChange}
             />
             <TextField
               label="动作描述"
@@ -68,13 +61,13 @@ class ActionEditor extends Component {
               margin="normal"
               name={'desc'}
               value={this.state.desc}
-              onChange={this.handleInputChange}
+              onChange={this.handleChange}
             />
-            <FormControl className={classes.formControl}>
+            <FormControl margin="normal" className={classes.select}>
               <InputLabel htmlFor="type">部位</InputLabel>
               <Select
                 value={this.state.type}
-                onChange={this.handleInputChange}
+                onChange={this.handleChange}
                 inputProps={{ name: 'type' }}
               >
                 <MenuItem value={0}>
@@ -85,41 +78,19 @@ class ActionEditor extends Component {
                 <MenuItem value={3}>背部</MenuItem>
               </Select>
             </FormControl>
-            <FormGroup row>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={_.includes(this.state.record, "1")}
-                    onChange={this.handleSelectChange}
-                    inputProps={{ name: 'record' }}
-                    value="1"
-                  />
-                }
-                label="时间"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={_.includes(this.state.record, "2")}
-                    onChange={this.handleSelectChange}
-                    inputProps={{ name: 'record' }}
-                    value="2"
-                  />
-                }
-                label="次数"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={_.includes(this.state.record, "2")}
-                    onChange={this.handleSelectChange}
-                    inputProps={{ name: 'record' }}
-                    value="3"
-                  />
-                }
-                label="重量"
-              />
-            </FormGroup>
+            <FormControl component="fieldset" className={classes.formControl} fullWidth>
+              <FormLabel component="legend">记录</FormLabel>
+              <RadioGroup
+                aria-label="record"
+                name="record"
+                className={classes.group}
+                value={this.state.record}
+                onChange={this.handleChange}
+              >
+                <FormControlLabel value="1" control={<Radio />} label="重量&组数" />
+                <FormControlLabel value="2" control={<Radio />} label="时间" />
+              </RadioGroup>
+            </FormControl>
             <div className={classes.buttonGroup}>
               <Button variant="contained" className={classes.button}>
                 取消
