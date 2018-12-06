@@ -9,14 +9,11 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  FormGroup,
   FormControlLabel,
-  Checkbox,
   FormLabel,
   RadioGroup,
   Radio
 } from '@material-ui/core';
-import _ from 'lodash';
 import styles from './styles';
 
 class ActionEditor extends Component {
@@ -26,10 +23,10 @@ class ActionEditor extends Component {
     type: 1,
     record: '1'
   };
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
   };
-  handleChange = (event) => {
+  handleChange = event => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -43,7 +40,12 @@ class ActionEditor extends Component {
     return (
       <div className={classes.container}>
         <Paper elevation={1} className={classes.content}>
-          <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+          <form
+            className={classes.container}
+            noValidate
+            autoComplete="off"
+            onSubmit={this.handleSubmit}
+          >
             <TextField
               label="动作名称"
               placeholder="请输入动作名称"
@@ -78,7 +80,11 @@ class ActionEditor extends Component {
                 <MenuItem value={3}>背部</MenuItem>
               </Select>
             </FormControl>
-            <FormControl component="fieldset" className={classes.formControl} fullWidth>
+            <FormControl
+              component="fieldset"
+              className={classes.formControl}
+              fullWidth
+            >
               <FormLabel component="legend">记录</FormLabel>
               <RadioGroup
                 aria-label="record"
@@ -87,7 +93,11 @@ class ActionEditor extends Component {
                 value={this.state.record}
                 onChange={this.handleChange}
               >
-                <FormControlLabel value="1" control={<Radio />} label="重量&组数" />
+                <FormControlLabel
+                  value="1"
+                  control={<Radio />}
+                  label="重量&组数"
+                />
                 <FormControlLabel value="2" control={<Radio />} label="时间" />
               </RadioGroup>
             </FormControl>
@@ -95,7 +105,12 @@ class ActionEditor extends Component {
               <Button variant="contained" className={classes.button}>
                 取消
               </Button>
-              <Button variant="contained" color="primary" type={'submit'} className={classes.button}>
+              <Button
+                variant="contained"
+                color="primary"
+                type={'submit'}
+                className={classes.button}
+              >
                 提交
               </Button>
             </div>
@@ -107,7 +122,7 @@ class ActionEditor extends Component {
 }
 
 ActionEditor.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ActionEditor);
