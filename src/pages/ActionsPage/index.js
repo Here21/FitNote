@@ -1,1 +1,1 @@
-export {default} from './ActionsPage';
+export { default } from './ActionsPage';

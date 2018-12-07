@@ -7,9 +7,7 @@ class HomePage extends Component {
     return (
       <div>
         <Button variant="contained">
-          <Link to={'/actions'}>
-            Link
-          </Link>
+          <Link to={'/actions'}>Link</Link>
         </Button>
         Hello Home {this.props.match.params.id}
       </div>

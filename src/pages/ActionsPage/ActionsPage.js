@@ -31,7 +31,12 @@ class ActionsPage extends Component {
             加入训练
           </Button>
         </Paper>
-        <Fab color="secondary" aria-label="Add" className={classes.fab} onClick={this.handleAdd}>
+        <Fab
+          color="secondary"
+          aria-label="Add"
+          className={classes.fab}
+          onClick={this.handleAdd}
+        >
           <AddIcon />
         </Fab>
       </div>
@@ -40,7 +45,7 @@ class ActionsPage extends Component {
 }
 
 ActionsPage.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ActionsPage);

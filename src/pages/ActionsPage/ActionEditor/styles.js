@@ -1,8 +1,6 @@
 const styles = theme => {
   return {
-    container: {
-
-    },
+    container: {},
     content: {
       padding: theme.spacing.unit * 2,
       marginBottom: theme.spacing.unit * 2,
@@ -17,7 +15,7 @@ const styles = theme => {
     },
     button: {
       marginLeft: theme.spacing.unit * 2,
-      marginTop: theme.spacing.unit * 2,
+      marginTop: theme.spacing.unit * 2
     },
     select: {
       minWidth: '100px',
@@ -29,6 +27,7 @@ const styles = theme => {
       alignItems: 'flex-start',
       marginTop: theme.spacing.unit * 2
     }
-  }};
+  };
+};
 
 export default styles;

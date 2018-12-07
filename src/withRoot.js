@@ -17,11 +17,11 @@ const theme = createMuiTheme({
       main: '#dd2c00',
       dark: '#a30000',
       contrastText: '#ffffff'
-    },
+    }
   },
   typography: {
-    useNextVariants: true,
-  },
+    useNextVariants: true
+  }
 });
 
 function withRoot(Component) {

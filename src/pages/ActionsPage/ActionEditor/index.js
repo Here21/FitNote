@@ -1,1 +1,1 @@
-export {default} from './ActionEditor';
+export { default } from './ActionEditor';
