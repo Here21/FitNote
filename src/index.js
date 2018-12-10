@@ -6,7 +6,7 @@ import './styles/base.css';
 import * as serviceWorker from './serviceWorker';
 
 const render = Component => {
-  ReactDOM.render(<Component />, document.getElementById('root'))
+  ReactDOM.render(<Component />, document.getElementById('root'));
 };
 
 render(Route);

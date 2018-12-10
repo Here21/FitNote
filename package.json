@@ -64,7 +64,15 @@
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "prettier",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [],
+    "rules": {
+      "prettier/prettier": "error"
+    }
   },
   "browserslist": [
     ">0.2%",
@@ -119,6 +127,8 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "node-sass": "^4.10.0"
   }
 }
