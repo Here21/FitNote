@@ -40,12 +40,7 @@ class ActionEditor extends Component {
     return (
       <div className={classes.container}>
         <Paper elevation={1} className={classes.content}>
-          <form
-            className={classes.container}
-            noValidate
-            autoComplete="off"
-            onSubmit={this.handleSubmit}
-          >
+          <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
             <TextField
               label="动作名称"
               placeholder="请输入动作名称"

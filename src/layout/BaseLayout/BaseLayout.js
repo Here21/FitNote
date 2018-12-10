@@ -86,22 +86,19 @@ class BaseLayout extends React.Component {
           </div>
           <Divider />
           <List>
-            <ListItem button onTouchEnd={() => this.handleNavigate('/home')}>
+            <ListItem button onClick={() => this.handleNavigate('/home')}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText primary={'训练历程'} />
             </ListItem>
-            <ListItem button onTouchEnd={() => this.handleNavigate('/actions')}>
+            <ListItem button onClick={() => this.handleNavigate('/actions')}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText primary={'动作库'} />
             </ListItem>
-            <ListItem
-              button
-              onTouchEnd={() => this.handleNavigate('/training')}
-            >
+            <ListItem button onClick={() => this.handleNavigate('/training')}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
