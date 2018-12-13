@@ -1,18 +1,23 @@
 const styles = theme => {
   return {
-    container: {},
+    container: {
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
     content: {
       padding: theme.spacing.unit * 2,
-      marginBottom: theme.spacing.unit * 2,
+      margin: theme.spacing.unit * 2,
       display: 'flex',
       maxWidth: '400px',
       justifyContent: 'space-between',
-      alignItems: 'center',
-      margin: 'auto'
+      alignItems: 'center'
     },
     buttonGroup: {
       display: 'flex',
-      justifyContent: 'flex-end'
+      justifyContent: 'center'
     },
     button: {
       marginLeft: theme.spacing.unit * 2,

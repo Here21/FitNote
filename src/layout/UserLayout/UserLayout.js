@@ -1,41 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import {
-  Drawer,
-  AppBar,
-  Toolbar,
-  List,
-  Typography,
-  Divider,
-  IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Paper,
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Button
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import { Paper, TextField, Button } from '@material-ui/core';
 import withRoot from '../../withRoot';
 import styles from './styles';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import ActionsPage from '../../pages/ActionsPage';
-import HomePage from '../../pages/HomePage';
-import TrainingPage from '../../pages/TrainingPage';
-import ActionEditor from '../../pages/ActionsPage/ActionEditor';
 
 class UserLayout extends React.Component {
   state = {
@@ -59,6 +27,7 @@ class UserLayout extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
+        <h1>FIT NOTE</h1>
         <Paper elevation={1} className={classes.content}>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
@@ -77,6 +46,7 @@ class UserLayout extends React.Component {
               autoComplete="new-password"
               fullWidth
               required
+              margin={'normal'}
               type="password"
               name={'password'}
               value={this.state.password}
