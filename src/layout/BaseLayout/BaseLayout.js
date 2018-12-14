@@ -18,7 +18,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import withRoot from '../../withRoot';
 import styles from './styles';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import ActionsPage from '../../pages/ActionsPage';
@@ -126,4 +125,4 @@ BaseLayout.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default withRoot(withStyles(styles, { withTheme: true })(BaseLayout));
+export default withStyles(styles, { withTheme: true })(BaseLayout);

@@ -4,9 +4,38 @@ import Route from './router';
 import 'typeface-roboto';
 import './styles/base.css';
 import * as serviceWorker from './serviceWorker';
+import { SnackbarProvider, withSnackbar } from 'notistack';
+import G from './utils/global';
+import withRoot from './withRoot';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 const render = Component => {
-  ReactDOM.render(<Component />, document.getElementById('root'));
+  // hack: 全局使用 notification
+  const NotistackHack = withSnackbar(props => {
+    G.notify = props.enqueueSnackbar;
+    return <Component />;
+  });
+  const NotifyWrap = () => (
+    <SnackbarProvider
+      style={{ maxWidth: '400px', margin: '0 16px' }}
+      maxSnack={3}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'center'
+      }}
+      action={[
+        <IconButton key="close" aria-label="Close" color="inherit">
+          <CloseIcon />
+        </IconButton>
+      ]}
+      autoHideDuration={3000}
+    >
+      <NotistackHack />
+    </SnackbarProvider>
+  );
+  const AppWrap = withRoot(NotifyWrap);
+  ReactDOM.render(<AppWrap />, document.getElementById('root'));
 };
 
 render(Route);
