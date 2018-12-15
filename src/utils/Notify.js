@@ -13,22 +13,25 @@ class Notify {
       this._enqueueSnackbar = enqueueSnackbar;
     }
   }
-  message(message) {
+  _handler(message, variant = 'default') {
     this._enqueueSnackbar
-      ? this._enqueueSnackbar(message, { ...this.option, variant: 'default' })
+      ? this._enqueueSnackbar(message, { ...this.option, variant })
       : console.log('wait for init');
   }
+  message(message) {
+    this._handler(message);
+  }
   success(message) {
-    this._enqueueSnackbar(message, { ...this.option, variant: 'success' });
+    this._handler(message, 'success');
   }
   warning(message) {
-    this._enqueueSnackbar(message, { ...this.option, variant: 'warning' });
+    this._handler(message, 'warning');
   }
   error(message) {
-    this._enqueueSnackbar(message, { ...this.option, variant: 'error' });
+    this._handler(message, 'error');
   }
   info(message) {
-    this._enqueueSnackbar(message, { ...this.option, variant: 'info' });
+    this._handler(message, 'info');
   }
 }
 
