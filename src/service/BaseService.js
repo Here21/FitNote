@@ -3,7 +3,7 @@ import _ from 'lodash';
 import C from '../constant/const';
 import { deleteCookie } from '../utils/cookie';
 import { proxy } from '../config/config';
-import G from '../utils/global';
+import Notify from '../utils/Notify';
 
 export class BaseService {
   constructor() {
@@ -48,12 +48,7 @@ export class BaseService {
           reject(error);
         });
     }).catch(error => {
-      G.notify(_.get(error, 'message', '未知请求错误'), {
-        anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'center'
-        }
-      });
+      Notify.info(C.ERROR_CODE.DESC[C.ERROR_CODE.SYSTEM_ERROR]);
       console.warn('💣 request error: ', error);
     });
   }

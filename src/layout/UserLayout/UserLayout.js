@@ -5,6 +5,7 @@ import { Paper, TextField, Button } from '@material-ui/core';
 import withRoot from '../../withRoot';
 import styles from './styles';
 import UserService from '../../service/UserService';
+import Notify from '../../utils/Notify';
 
 class UserLayout extends React.Component {
   state = {
@@ -14,6 +15,7 @@ class UserLayout extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+    Notify.message('test');
     UserService.login(this.state).then(data => {
       console.log(data);
     });

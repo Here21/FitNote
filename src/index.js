@@ -5,15 +5,15 @@ import 'typeface-roboto';
 import './styles/base.css';
 import * as serviceWorker from './serviceWorker';
 import { SnackbarProvider, withSnackbar } from 'notistack';
-import G from './utils/global';
 import withRoot from './withRoot';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import Notify from './utils/Notify';
 
 const render = Component => {
   // hack: 全局使用 notification
   const NotistackHack = withSnackbar(props => {
-    G.notify = props.enqueueSnackbar;
+    Notify.init(props.enqueueSnackbar);
     return <Component />;
   });
   const NotifyWrap = () => (
