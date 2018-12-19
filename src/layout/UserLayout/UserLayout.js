@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Paper, TextField, Button } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
 import withRoot from '../../withRoot';
 import styles from './styles';
 import UserService from '../../service/UserService';
@@ -13,12 +14,17 @@ class UserLayout extends React.Component {
     password: ''
   };
   handleSubmit = e => {
+    const { history } = this.props;
+    console.log(history);
     e.preventDefault();
-    console.log(this.state);
     Notify.message('test');
-    UserService.login(this.state).then(data => {
-      console.log(data);
-    });
+    UserService.login(this.state)
+      .then(data => {
+        console.log(data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
   handleChange = event => {
     const target = event.target;
@@ -83,4 +89,6 @@ UserLayout.propTypes = {
   theme: PropTypes.object.isRequired
 };
 
-export default withRoot(withStyles(styles, { withTheme: true })(UserLayout));
+export default withRoot(
+  withStyles(styles, { withTheme: true })(withRouter(UserLayout))
+);

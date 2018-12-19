@@ -26,6 +26,7 @@ export class BaseService {
 
   axios(method, url, data) {
     return new Promise((resolve, reject) => {
+      // TODO: production 环境注释这里的 console
       console.log('🚀 http request: ', method, url, data);
       this.$http[method](url, data)
         .then(function(resp) {
@@ -40,16 +41,16 @@ export class BaseService {
             if (_.get(data, 'errorCode') === C.ERROR_CODE.TOKEN_ERROR) {
               deleteCookie('token');
             }
+            console.warn('💣 request warning: ', data);
             reject(data);
           }
           resolve(resp.data);
         })
         .catch(function(error) {
+          Notify.info(C.ERROR_CODE.DESC[C.ERROR_CODE.SYSTEM_ERROR]);
+          console.warn('🐞 request error: ', error);
           reject(error);
         });
-    }).catch(error => {
-      Notify.info(C.ERROR_CODE.DESC[C.ERROR_CODE.SYSTEM_ERROR]);
-      console.warn('💣 request error: ', error);
     });
   }
 
