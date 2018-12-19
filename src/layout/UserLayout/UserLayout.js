@@ -17,13 +17,12 @@ class UserLayout extends React.Component {
     const { history } = this.props;
     console.log(history);
     e.preventDefault();
-    Notify.message('test');
     UserService.login(this.state)
       .then(data => {
-        console.log(data);
+        history.replace('/home');
       })
       .catch(e => {
-        console.log(e);
+        Notify.message('请重新登录');
       });
   };
   handleChange = event => {
