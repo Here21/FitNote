@@ -4,8 +4,27 @@ import Add from '@material-ui/icons/Add';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+import RecorderDialog from '../RecorderDialog';
 
 class TrainingItemCard extends Component {
+  state = {
+    open: false
+  };
+  handleClickOpen = () => {
+    this.setState({
+      open: true
+    });
+  };
+  handleClose = () => {
+    this.setState({
+      open: false
+    });
+  };
+  handleSubmit = value => {
+    console.log(value);
+    // TODO: submit form
+    this.handleClose();
+  };
   render() {
     const { classes } = this.props;
     const data = [
@@ -20,7 +39,11 @@ class TrainingItemCard extends Component {
           <Typography variant="h6" gutterBottom>
             平板卧推
           </Typography>
-          <IconButton className={classes.iconButton} aria-label="add">
+          <IconButton
+            className={classes.iconButton}
+            aria-label="add"
+            onClick={this.handleClickOpen}
+          >
             <Add />
           </IconButton>
         </div>
@@ -37,6 +60,11 @@ class TrainingItemCard extends Component {
           ))}
         </div>
         <div className={classes.processLine} style={{ width: '20%' }} />
+        <RecorderDialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          onSubmit={this.handleSubmit}
+        />
       </Card>
     );
   }
