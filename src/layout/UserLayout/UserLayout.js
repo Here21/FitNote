@@ -40,11 +40,11 @@ class UserLayout extends React.Component {
       <div className={classes.container}>
         <h1>FIT NOTE</h1>
         <Paper elevation={1} className={classes.content}>
-          <form noValidate onSubmit={this.handleSubmit}>
+          <form noValidate onSubmit={this.handleSubmit} autoComplete="off">
             <TextField
               label="账户"
               placeholder="请输入登录账户"
-              autoComplete="nope"
+              autoComplete="off"
               fullWidth
               required
               name={'account'}

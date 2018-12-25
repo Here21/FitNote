@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-// import Home from "../containers/Home/Home.js";
-// import Actions from "../pages/Actions/Actions.js";
 import BaseLayout from '../layout/BaseLayout';
 import UserLayout from '../layout/UserLayout';
 

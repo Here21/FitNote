@@ -13,6 +13,9 @@ const styles = theme => {
         duration: theme.transitions.duration.leavingScreen
       })
     },
+    appTitle: {
+      flexGrow: 1
+    },
     drawerHeader: {
       display: 'flex',
       alignItems: 'center',

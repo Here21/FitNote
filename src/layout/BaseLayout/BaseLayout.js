@@ -12,22 +12,29 @@ import {
   IconButton,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Button
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import styles from './styles';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import ActionsPage from '../../pages/ActionsPage';
 import HomePage from '../../pages/HomePage';
 import TrainingPage from '../../pages/TrainingPage';
 import ActionEditor from '../../pages/ActionsPage/ActionEditor';
+import { checkCookie, deleteCookie } from '../../utils/cookie';
 
 class BaseLayout extends React.Component {
   state = {
-    open: false
+    open: false,
+    auth: true,
+    anchorEl: null
   };
 
   handleDrawerOpen = () => {
@@ -44,10 +51,39 @@ class BaseLayout extends React.Component {
     this.handleDrawerClose();
   };
 
+  handleAccountLogout = () => {
+    deleteCookie('token');
+    this.setState({
+      auth: false
+    });
+  };
+
+  handleAccountMenu = event => {
+    this.setState({
+      anchorEl: event.currentTarget
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      anchorEl: null
+    });
+  };
+
+  componentDidMount() {
+    if (checkCookie('token')) {
+      this.setState({
+        auth: true
+      });
+    }
+  }
+
   render() {
     const { classes, theme } = this.props;
-    const { open } = this.state;
-
+    const { open, auth, anchorEl } = this.state;
+    if (!checkCookie('token')) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div className={classes.root}>
         <AppBar position="fixed" className={classes.appBar}>
@@ -60,9 +96,44 @@ class BaseLayout extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.appTitle}
+            >
               Fit Note
             </Typography>
+            {auth ? (
+              <div>
+                <IconButton
+                  aria-owns={!!anchorEl ? 'menu-appbar' : undefined}
+                  aria-haspopup="true"
+                  onClick={this.handleAccountMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={!!anchorEl}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem onClick={this.handleAccountLogout}>Logout</MenuItem>
+                </Menu>
+              </div>
+            ) : (
+              <Button color="inherit">Login</Button>
+            )}
           </Toolbar>
         </AppBar>
         <Drawer
