@@ -15,16 +15,21 @@ import {
   Radio
 } from '@material-ui/core';
 import styles from './styles';
+import ActionService from '../../../service/ActionService';
 
 class ActionEditor extends Component {
   state = {
     name: '',
     desc: '',
-    type: 1,
+    part: 1,
     record: '1'
   };
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state);
+    ActionService.add(this.state).then(res => {
+      this.props.history.goBack();
+    });
   };
   handleChange = event => {
     const target = event.target;
@@ -61,11 +66,11 @@ class ActionEditor extends Component {
               onChange={this.handleChange}
             />
             <FormControl margin="normal" className={classes.select}>
-              <InputLabel htmlFor="type">部位</InputLabel>
+              <InputLabel htmlFor="part">部位</InputLabel>
               <Select
-                value={this.state.type}
+                value={this.state.part}
                 onChange={this.handleChange}
-                inputProps={{ name: 'type' }}
+                inputProps={{ name: 'part' }}
               >
                 <MenuItem value={0}>
                   <em>无</em>

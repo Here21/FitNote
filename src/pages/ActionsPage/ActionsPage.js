@@ -7,12 +7,20 @@ import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import styles from './styles';
+import ActionService from '../../service/ActionService';
 
 class ActionsPage extends Component {
   handleAdd = () => {
     let { history } = this.props;
     history.push('/actions/add');
   };
+
+  componentDidMount() {
+    console.log(' ---- ');
+    ActionService.get().then(res => {
+      console.log(res);
+    });
+  }
 
   render() {
     const { classes } = this.props;
