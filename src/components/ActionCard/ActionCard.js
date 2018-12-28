@@ -7,7 +7,7 @@ class ActionCard extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Paper elevation={1} className={classes.content}>
+      <Paper elevation={1} className={classes.container}>
         <div>
           <Typography variant="h6" gutterBottom>
             杠铃肩部推举
@@ -16,9 +16,7 @@ class ActionCard extends Component {
             肩部
           </Typography>
         </div>
-        <Button size="small" className={classes.margin}>
-          加入训练
-        </Button>
+        <Button size="small">加入训练</Button>
       </Paper>
     );
   }
