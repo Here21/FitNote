@@ -3,7 +3,7 @@ const styles = theme => {
     container: {
       flexGrow: 1,
       padding: theme.spacing.unit,
-      marginBottom: theme.spacing.unit * 2,
+      marginBottom: theme.spacing.unit,
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
       display: 'flex',
@@ -11,6 +11,11 @@ const styles = theme => {
       width: '100%',
       justifyContent: 'space-between',
       alignItems: 'center'
+    },
+    cleanMargin: {
+      marginBottom: theme.spacing.unit * 2,
+      marginLeft: 0,
+      marginRight: 0
     }
   };
 };

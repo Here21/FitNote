@@ -15,7 +15,6 @@ class UserLayout extends React.Component {
   };
   handleSubmit = e => {
     const { history } = this.props;
-    console.log(history);
     e.preventDefault();
     UserService.login(this.state)
       .then(data => {
