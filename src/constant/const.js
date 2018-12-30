@@ -55,3 +55,6 @@ exports.METHOD = {
   DELETE: 4,
   OPTIONS: 5
 };
+
+// TODO: 部位解释
+exports.PART = {};

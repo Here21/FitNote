@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Paper, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
@@ -20,7 +21,7 @@ class ActionCard extends Component {
     });
   };
   render() {
-    const { classes } = this.props;
+    const { classes, data } = this.props;
     const { INNER_WIDTH } = this.state;
 
     return (
@@ -33,7 +34,7 @@ class ActionCard extends Component {
       >
         <div>
           <Typography variant="h6" gutterBottom>
-            杠铃肩部推举
+            {data.name}
           </Typography>
           <Typography variant="caption" gutterBottom>
             肩部
@@ -44,5 +45,10 @@ class ActionCard extends Component {
     );
   }
 }
+
+ActionCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.object
+};
 
 export default withStyles(styles)(ActionCard);

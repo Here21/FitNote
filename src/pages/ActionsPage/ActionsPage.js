@@ -8,6 +8,9 @@ import ActionService from '../../service/ActionService';
 import ActionCard from '../../components/ActionCard';
 
 class ActionsPage extends Component {
+  state = {
+    data: []
+  };
   handleAdd = () => {
     let { history } = this.props;
     history.push('/actions/add');
@@ -15,19 +18,20 @@ class ActionsPage extends Component {
 
   componentDidMount() {
     ActionService.get().then(res => {
-      console.log(res);
+      this.setState({
+        data: res.data
+      });
     });
   }
 
   render() {
     const { classes } = this.props;
+    const { data } = this.state;
     return (
       <div className={classes.container}>
-        <ActionCard />
-        <ActionCard />
-        <ActionCard />
-        <ActionCard />
-        <ActionCard />
+        {data.map(item => (
+          <ActionCard key={item.id} data={item} />
+        ))}
         <Fab
           color="secondary"
           aria-label="Add"
