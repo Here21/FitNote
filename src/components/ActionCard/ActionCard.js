@@ -22,7 +22,7 @@ class ActionCard extends Component {
     });
   };
   render() {
-    const { classes, data } = this.props;
+    const { classes, data, add } = this.props;
     const { INNER_WIDTH } = this.state;
 
     return (
@@ -41,7 +41,9 @@ class ActionCard extends Component {
             {PART[data.part] || '---'}
           </Typography>
         </div>
-        <Button size="small">加入训练</Button>
+        <Button size="small" onClick={() => add(data.id)}>
+          加入训练
+        </Button>
       </Paper>
     );
   }
@@ -49,7 +51,8 @@ class ActionCard extends Component {
 
 ActionCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.object
+  data: PropTypes.object,
+  add: PropTypes.func
 };
 
 export default withStyles(styles)(ActionCard);

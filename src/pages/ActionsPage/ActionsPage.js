@@ -5,6 +5,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import styles from './styles';
 import ActionService from '../../service/ActionService';
+import TrainingService from '../../service/TrainingService';
 import ActionCard from '../../components/ActionCard';
 
 class ActionsPage extends Component {
@@ -24,13 +25,22 @@ class ActionsPage extends Component {
     });
   }
 
+  handleAddToTraining = value => {
+    console.log(value);
+    // TrainingService.add();
+  };
+
   render() {
     const { classes } = this.props;
     const { data } = this.state;
     return (
       <div className={classes.container}>
         {data.map(item => (
-          <ActionCard key={item.id} data={item} />
+          <ActionCard
+            key={item.id}
+            data={item}
+            add={this.handleAddToTraining}
+          />
         ))}
         <Fab
           color="secondary"
