@@ -4,6 +4,7 @@ import { Paper, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import styles from './styles';
+import { PART } from '../../constant/const';
 
 class ActionCard extends Component {
   state = {
@@ -37,7 +38,7 @@ class ActionCard extends Component {
             {data.name}
           </Typography>
           <Typography variant="caption" gutterBottom>
-            肩部
+            {PART[data.part] || '---'}
           </Typography>
         </div>
         <Button size="small">加入训练</Button>

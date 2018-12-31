@@ -57,4 +57,11 @@ exports.METHOD = {
 };
 
 // TODO: 部位解释
-exports.PART = {};
+exports.PART = {
+  1: '胸',
+  2: '背',
+  3: '肩',
+  4: '胳膊',
+  5: '腿部',
+  6: '核心'
+};
