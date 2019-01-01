@@ -26,8 +26,7 @@ class ActionsPage extends Component {
   }
 
   handleAddToTraining = value => {
-    console.log(value);
-    // TrainingService.add();
+    TrainingService.add({ action_id: value });
   };
 
   render() {
