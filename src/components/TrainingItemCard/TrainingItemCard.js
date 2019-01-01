@@ -6,10 +6,12 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import RecorderDialog from '../RecorderDialog';
 import PropTypes from 'prop-types';
+import RecorderService from '../../service/RecorderService';
 
 class TrainingItemCard extends Component {
   state = {
-    open: false
+    open: false,
+    recordData: []
   };
   handleClickOpen = () => {
     this.setState({
@@ -22,18 +24,31 @@ class TrainingItemCard extends Component {
     });
   };
   handleSubmit = value => {
-    console.log(value);
-    // TODO: submit form
-    this.handleClose();
+    const { data } = this.props;
+    RecorderService.add({
+      training_id: data.id,
+      ...value
+    }).then(res => {
+      this.handleClose();
+      this.fetchData(data.id);
+    });
   };
+  componentDidMount() {
+    const { data } = this.props;
+    this.fetchData(data.id);
+  }
+
+  fetchData = id => {
+    RecorderService.getTrainingRecord(id).then(res => {
+      this.setState({
+        recordData: res.data
+      });
+    });
+  };
+
   render() {
     const { classes } = this.props;
-    const data = [
-      { index: 0, weight: 15, count: 15 },
-      { index: 1, weight: 17.5, count: 12 },
-      { index: 2, weight: 20, count: 10 },
-      { index: 3, weight: 22.5, count: 8 }
-    ];
+    const { recordData } = this.state;
     return (
       <Card className={classes.container}>
         <div className={classes.header}>
@@ -53,10 +68,10 @@ class TrainingItemCard extends Component {
             <span>重量(KG)</span>
             <span>次数(RM)</span>
           </div>
-          {data.map(item => (
-            <div key={item.index} className={classes.col}>
+          {recordData.map(item => (
+            <div key={item.id} className={classes.col}>
               <span>{item.weight}</span>
-              <span>{item.count}</span>
+              <span>{item.set}</span>
             </div>
           ))}
         </div>

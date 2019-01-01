@@ -15,7 +15,7 @@ import styles from './styles';
 class RecorderDialog extends Component {
   state = {
     weight: 0,
-    rate: 0
+    set: 0
   };
 
   handleClose = () => {
@@ -49,7 +49,6 @@ class RecorderDialog extends Component {
             autoFocus
             autoComplete="off"
             margin="dense"
-            id="name"
             label="重量(KG)："
             type="number"
             min="0"
@@ -61,14 +60,13 @@ class RecorderDialog extends Component {
           <TextField
             margin="dense"
             autoComplete="off"
-            id="name"
             label="次数(RM)："
             type="number"
             min="0"
             max="2000"
             fullWidth
-            value={this.state.rate}
-            onChange={this.handleChange('rate')}
+            value={this.state.set}
+            onChange={this.handleChange('set')}
           />
         </DialogContent>
         <DialogActions>
