@@ -1,8 +1,10 @@
 const styles = theme => {
   return {
     container: {
+      width: '100%',
       padding: theme.spacing.unit * 2,
-      position: 'relative'
+      position: 'relative',
+      marginBottom: theme.spacing.unit * 2
     },
     header: {
       display: 'flex',

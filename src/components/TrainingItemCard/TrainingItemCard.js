@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import RecorderDialog from '../RecorderDialog';
+import PropTypes from 'prop-types';
 
 class TrainingItemCard extends Component {
   state = {
@@ -69,5 +70,10 @@ class TrainingItemCard extends Component {
     );
   }
 }
+
+TrainingItemCard.propTypes = {
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.object
+};
 
 export default withStyles(styles)(TrainingItemCard);
