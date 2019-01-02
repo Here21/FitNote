@@ -20,7 +20,8 @@ const styles = theme => {
     },
     tableHeader: {
       minWidth: '50px',
-      alignItems: 'flex-start'
+      alignItems: 'flex-start',
+      marginRight: '16px'
     },
     col: {
       display: 'flex',
@@ -35,6 +36,15 @@ const styles = theme => {
       background: '#5677FC',
       height: '4px',
       margin: '0 -16px'
+    },
+    recordItemWrap: {
+      display: 'flex',
+      flex: 1
+    },
+    recordItem: {
+      minWidth: '20px',
+      maxWidth: '40px',
+      width: '100%'
     }
   };
 };

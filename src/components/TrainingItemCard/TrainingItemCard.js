@@ -68,12 +68,17 @@ class TrainingItemCard extends Component {
             <span>重量(KG)</span>
             <span>次数(RM)</span>
           </div>
-          {recordData.map(item => (
-            <div key={item.id} className={classes.col}>
-              <span>{item.weight}</span>
-              <span>{item.set}</span>
-            </div>
-          ))}
+          <div className={classes.recordItemWrap}>
+            {recordData.map(item => (
+              <div
+                key={item.id}
+                className={classNames(classes.col, classes.recordItem)}
+              >
+                <span>{item.weight}</span>
+                <span>{item.set}</span>
+              </div>
+            ))}
+          </div>
         </div>
         <div className={classes.processLine} style={{ width: '20%' }} />
         <RecorderDialog
