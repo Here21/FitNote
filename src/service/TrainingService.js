@@ -1,16 +1,8 @@
 import { BaseService } from './BaseService';
-import Notify from '../utils/Notify';
 
 class TrainingService extends BaseService {
   add(data) {
-    super
-      .post('/training', data)
-      .then(res => {
-        Notify.success(res.message);
-      })
-      .catch(err => {
-        Notify.error(err);
-      });
+    return super.post('/training', data);
   }
   get() {
     return super.get('/training');

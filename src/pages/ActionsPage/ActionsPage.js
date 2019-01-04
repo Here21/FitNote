@@ -7,10 +7,13 @@ import styles from './styles';
 import ActionService from '../../service/ActionService';
 import TrainingService from '../../service/TrainingService';
 import ActionCard from '../../components/ActionCard';
+import SetGoalDialog from '../../components/SetGoalDialog';
+import Notify from '../../utils/Notify';
 
 class ActionsPage extends Component {
   state = {
-    data: []
+    data: [],
+    open: false
   };
   handleAdd = () => {
     let { history } = this.props;
@@ -26,12 +29,31 @@ class ActionsPage extends Component {
   }
 
   handleAddToTraining = value => {
-    TrainingService.add({ action_id: value });
+    this.setState({
+      open: true,
+      actionId: value
+    });
+  };
+
+  handleConfirmGoal = value => {
+    TrainingService.add({
+      action_id: this.state.actionId,
+      goal: value
+    }).then(res => {
+      this.handleClose();
+      Notify.success(res.message);
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      open: false
+    });
   };
 
   render() {
     const { classes } = this.props;
-    const { data } = this.state;
+    const { data, open } = this.state;
     return (
       <div className={classes.container}>
         {data.map(item => (
@@ -41,6 +63,11 @@ class ActionsPage extends Component {
             add={this.handleAddToTraining}
           />
         ))}
+        <SetGoalDialog
+          open={open}
+          close={this.handleClose}
+          confirm={this.handleConfirmGoal}
+        />
         <Fab
           color="secondary"
           aria-label="Add"
