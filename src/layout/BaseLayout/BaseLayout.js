@@ -178,12 +178,12 @@ class BaseLayout extends React.Component {
         </Drawer>
         <div className={classes.content}>
           <Switch>
-            <Route path="/home" component={HomePage} />
+            <Route path="/home" exact component={HomePage} />
             <Route path="/actions" exact component={ActionsPage} />
-            <Route path="/actions/add" component={ActionEditor} />
-            <Route path="/actions/:id" component={ActionsPage} />
+            <Route path="/actions/add" exact component={ActionEditor} />
+            <Route path="/actions/:id" exact component={ActionsPage} />
             <Route path="/training" component={TrainingPage} />
-            <Redirect to="/home" />
+            <Redirect to="/404" />
           </Switch>
         </div>
       </div>

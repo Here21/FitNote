@@ -26,10 +26,13 @@ class ActionEditor extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     ActionService.add(this.state).then(res => {
       this.props.history.goBack();
     });
+  };
+  handleCancel = () => {
+    const { history } = this.props;
+    history.back();
   };
   handleChange = event => {
     const target = event.target;
@@ -102,7 +105,11 @@ class ActionEditor extends Component {
               </RadioGroup>
             </FormControl>
             <div className={classes.buttonGroup}>
-              <Button variant="contained" className={classes.button}>
+              <Button
+                variant="contained"
+                className={classes.button}
+                onClick={this.handleCancel}
+              >
                 取消
               </Button>
               <Button
