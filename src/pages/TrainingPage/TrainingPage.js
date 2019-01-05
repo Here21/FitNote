@@ -11,6 +11,7 @@ class TrainingPage extends Component {
   };
   componentDidMount() {
     TrainingService.get().then(res => {
+      console.log(res);
       this.setState({
         data: res.data
       });

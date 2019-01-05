@@ -11,7 +11,8 @@ import RecorderService from '../../service/RecorderService';
 class TrainingItemCard extends Component {
   state = {
     open: false,
-    recordData: []
+    recordData: [],
+    progress: 0
   };
   handleClickOpen = () => {
     this.setState({
@@ -47,13 +48,13 @@ class TrainingItemCard extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, data } = this.props;
     const { recordData } = this.state;
     return (
       <Card className={classes.container}>
         <div className={classes.header}>
           <Typography variant="h6" gutterBottom>
-            平板卧推
+            {data.name || '---'}
           </Typography>
           <IconButton
             className={classes.iconButton}
