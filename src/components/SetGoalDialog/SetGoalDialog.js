@@ -18,18 +18,15 @@ class SetGoalDialog extends React.Component {
     goal: 3
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    // 在关闭modal的时候，重置state goal默认值
-    if (!nextProps.open) {
-      return {
-        goal: 3
-      };
-    }
-    return null;
-  }
+  initState = () => {
+    this.setState({
+      goal: 3
+    });
+  };
 
   handleClose = () => {
     this.props.close();
+    this.initState();
   };
 
   handleGoalChange = event => {
@@ -38,6 +35,7 @@ class SetGoalDialog extends React.Component {
 
   handleConfirm = () => {
     this.props.confirm(this.state.goal);
+    this.initState();
   };
 
   render() {

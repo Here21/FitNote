@@ -24,14 +24,24 @@ class ActionEditor extends Component {
     part: 1,
     record: '1'
   };
+  initState = () => {
+    this.setState({
+      name: '',
+      desc: '',
+      part: 1,
+      record: '1'
+    });
+  };
   handleSubmit = e => {
     e.preventDefault();
     ActionService.add(this.state).then(res => {
       this.props.history.goBack();
+      this.initState();
     });
   };
   handleCancel = () => {
     this.props.history.goBack();
+    this.initState();
   };
   handleChange = event => {
     const target = event.target;

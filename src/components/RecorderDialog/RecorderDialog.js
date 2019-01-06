@@ -18,12 +18,21 @@ class RecorderDialog extends Component {
     set: 0
   };
 
+  initState = () => {
+    this.setState({
+      weight: 0,
+      set: 0
+    });
+  };
+
   handleClose = () => {
     this.props.onClose();
+    this.initState();
   };
 
   handleSubmit = () => {
     this.props.onSubmit(this.state);
+    this.initState();
   };
 
   handleChange = name => event => {
