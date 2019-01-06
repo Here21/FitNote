@@ -11,7 +11,6 @@ class TrainingPage extends Component {
   };
   componentDidMount() {
     TrainingService.get().then(res => {
-      console.log(res);
       this.setState({
         data: res.data
       });
@@ -20,6 +19,13 @@ class TrainingPage extends Component {
   render() {
     const { classes } = this.props;
     const { data } = this.state;
+    if (data.length === 0) {
+      return (
+        <div className={classes.message}>
+          您还没有添加今天的运动计划，去动作库中添加吧
+        </div>
+      );
+    }
     return (
       <div className={classes.container}>
         {data.map(item => (

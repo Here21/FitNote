@@ -7,12 +7,14 @@ import styles from './styles';
 import RecorderDialog from '../RecorderDialog';
 import PropTypes from 'prop-types';
 import RecorderService from '../../service/RecorderService';
+import ProgressBar from './ProgressBar';
 
 class TrainingItemCard extends Component {
   state = {
     open: false,
     recordData: [],
-    progress: 0
+    goalProgress: 0,
+    extraProgress: 0
   };
   handleClickOpen = () => {
     this.setState({
@@ -40,16 +42,26 @@ class TrainingItemCard extends Component {
   }
 
   fetchData = id => {
+    const { data } = this.props;
     RecorderService.getTrainingRecord(id).then(res => {
-      this.setState({
-        recordData: res.data
-      });
+      if (res.data.length <= data.goal) {
+        this.setState({
+          recordData: res.data,
+          goalProgress: (res.data.length / data.goal).toFixed(2) * 100
+        });
+      } else {
+        this.setState({
+          recordData: res.data,
+          goalProgress: 100,
+          extraProgress: (res.data.length / data.goal - 1).toFixed(2) * 100
+        });
+      }
     });
   };
 
   render() {
     const { classes, data } = this.props;
-    const { recordData } = this.state;
+    const { recordData, goalProgress, extraProgress } = this.state;
     return (
       <Card className={classes.container}>
         <div className={classes.header}>
@@ -81,7 +93,7 @@ class TrainingItemCard extends Component {
             ))}
           </div>
         </div>
-        <div className={classes.processLine} style={{ width: '20%' }} />
+        <ProgressBar goal={goalProgress} extra={extraProgress} />
         <RecorderDialog
           open={this.state.open}
           onClose={this.handleClose}

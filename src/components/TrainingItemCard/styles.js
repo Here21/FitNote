@@ -30,13 +30,6 @@ const styles = theme => {
       alignItems: 'center',
       color: theme.palette.primary.light
     },
-    processLine: {
-      position: 'absolute',
-      bottom: 0,
-      background: '#5677FC',
-      height: '4px',
-      margin: '0 -16px'
-    },
     recordItemWrap: {
       display: 'flex',
       flex: 1
