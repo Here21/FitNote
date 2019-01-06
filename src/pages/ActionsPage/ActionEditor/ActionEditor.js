@@ -31,8 +31,7 @@ class ActionEditor extends Component {
     });
   };
   handleCancel = () => {
-    const { history } = this.props;
-    history.back();
+    this.props.history.goBack();
   };
   handleChange = event => {
     const target = event.target;
@@ -81,6 +80,9 @@ class ActionEditor extends Component {
                 <MenuItem value={1}>胸部</MenuItem>
                 <MenuItem value={2}>肩部</MenuItem>
                 <MenuItem value={3}>背部</MenuItem>
+                <MenuItem value={4}>腿部</MenuItem>
+                <MenuItem value={5}>手臂</MenuItem>
+                <MenuItem value={6}>核心</MenuItem>
               </Select>
             </FormControl>
             <FormControl
