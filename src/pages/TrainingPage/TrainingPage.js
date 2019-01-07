@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import { withStyles } from '@material-ui/core/styles';
 import TrainingItemCard from '../../components/TrainingItemCard';
 import styles from './styles';
 import TrainingService from '../../service/TrainingService';
@@ -31,6 +33,10 @@ class TrainingPage extends Component {
         {data.map(item => (
           <TrainingItemCard key={item.id} data={item} />
         ))}
+        <Button variant="contained" color="primary" className={classes.button}>
+          训练完成
+          <DoneAllIcon className={classes.rightIcon} />
+        </Button>
       </div>
     );
   }

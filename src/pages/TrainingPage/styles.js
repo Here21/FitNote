@@ -13,6 +13,9 @@ const styles = theme => {
       bottom: 0,
       margin: 'auto',
       lineHeight: '100vh'
+    },
+    rightIcon: {
+      marginLeft: theme.spacing.unit
     }
   };
 };
