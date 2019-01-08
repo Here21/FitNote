@@ -7,6 +7,9 @@ class TrainingService extends BaseService {
   get() {
     return super.get('/training');
   }
+  getHistory() {
+    return super.get('/training/history');
+  }
   getOne(id) {
     return super.get(`/training/${id}`);
   }
