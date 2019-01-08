@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TrainingItemCard from '../../components/TrainingItemCard';
 import styles from './styles';
 import TrainingService from '../../service/TrainingService';
+import Notify from '../../utils/Notify';
 
 class TrainingPage extends Component {
   state = {
@@ -18,6 +19,16 @@ class TrainingPage extends Component {
       });
     });
   }
+  completeTraining = () => {
+    TrainingService.complete()
+      .then(res => {
+        Notify.success(res.message);
+      })
+      .catch(err => {
+        Notify.error(err.message);
+        console.log(err);
+      });
+  };
   render() {
     const { classes } = this.props;
     const { data } = this.state;
@@ -33,7 +44,12 @@ class TrainingPage extends Component {
         {data.map(item => (
           <TrainingItemCard key={item.id} data={item} />
         ))}
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={this.completeTraining}
+        >
           训练完成
           <DoneAllIcon className={classes.rightIcon} />
         </Button>

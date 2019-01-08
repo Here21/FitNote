@@ -10,6 +10,9 @@ class TrainingService extends BaseService {
   getOne(id) {
     return super.get(`/training/${id}`);
   }
+  complete() {
+    return super.put('/training/complete-all');
+  }
 }
 
 export default new TrainingService();
