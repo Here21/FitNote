@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { withStyles } from '@material-ui/core/styles';
 import TrainingService from '../../service/TrainingService';
 import ExpansionBoard from '../../components/ExpansionBoard';
@@ -12,8 +13,9 @@ class HomePage extends Component {
   };
   componentDidMount() {
     TrainingService.getHistory().then(res => {
+      const history = _.orderBy(Object.entries(res.data), a => a[0], 'desc');
       this.setState({
-        history: res.data
+        history
       });
     });
   }

@@ -24,11 +24,10 @@ class CalendarBoard extends PureComponent {
   render() {
     const { classes, data } = this.props;
     const values = data
-      ? Object.entries(data).map(item => {
+      ? data.map(item => {
           return { date: item[0], count: item[1].length };
         })
       : [];
-    console.log(values);
     const now = new Date().toISOString().slice(0, 10);
     const yesteryear = new Date(new Date(now) - DAYLONG * 365)
       .toISOString()
@@ -62,11 +61,11 @@ class CalendarBoard extends PureComponent {
 
 CalendarBoard.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.object
+  data: PropTypes.array
 };
 
 CalendarBoard.defaultProps = {
-  data: {}
+  data: []
 };
 
 export default withStyles(styles)(CalendarBoard);

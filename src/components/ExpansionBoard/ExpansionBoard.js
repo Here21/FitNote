@@ -24,7 +24,7 @@ class ExpansionBoard extends PureComponent {
     const { expanded } = this.state;
     return (
       <div className={classes.container}>
-        {Object.entries(data).map(item => {
+        {data.map(item => {
           return (
             <ExpansionPanel
               key={item[0]}
@@ -54,7 +54,7 @@ class ExpansionBoard extends PureComponent {
 
 ExpansionBoard.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.object
+  data: PropTypes.array
 };
 
 export default withStyles(styles)(ExpansionBoard);
