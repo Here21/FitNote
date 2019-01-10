@@ -22,6 +22,7 @@ class TrainingPage extends Component {
   completeTraining = () => {
     TrainingService.complete()
       .then(res => {
+        this.props.history.replace('/home');
         Notify.success(res.message);
       })
       .catch(err => {
