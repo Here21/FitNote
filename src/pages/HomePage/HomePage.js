@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import TrainingService from '../../service/TrainingService';
-import ExpansionPanel from '../../components/ExpansionPanel';
+import ExpansionBoard from '../../components/ExpansionBoard';
+import CalendarBoard from '../../components/CalendarBoard';
+import styles from './styles';
 
 class HomePage extends Component {
   state = {
@@ -17,17 +19,19 @@ class HomePage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     const { history } = this.state;
     return (
-      <div>
-        {history && <ExpansionPanel data={history} />}
-        <Button variant="contained">
-          <Link to={'/actions'}>Link</Link>
-        </Button>
-        Hello Home {this.props.match.params.id}
+      <div className={classes.container}>
+        <CalendarBoard />
+        {history && <ExpansionBoard data={history} />}
       </div>
     );
   }
 }
 
-export default HomePage;
+HomePage.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(HomePage);
