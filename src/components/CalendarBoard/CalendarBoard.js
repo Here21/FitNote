@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import CalendarHeatmap from 'react-calendar-heatmap';
+import { MONTH, WEEKDAY, DAYLONG } from '../../constant/const';
 import './custom-calendar.css';
 
 import styles from './styles';
@@ -9,13 +10,29 @@ import styles from './styles';
 class CalendarBoard extends PureComponent {
   componentDidMount() {
     this.calendarWrap.current.scrollTo(800, 0);
-    console.log(this.calendarWrap);
   }
 
   calendarWrap = React.createRef();
 
+  renderCalendarCell = value => {
+    if (!value) {
+      return 'color-empty';
+    }
+    return `color-fitnote-${value.count <= 4 ? value.count : 4}`;
+  };
+
   render() {
-    const { classes } = this.props;
+    const { classes, data } = this.props;
+    const values = data
+      ? Object.entries(data).map(item => {
+          return { date: item[0], count: item[1].length };
+        })
+      : [];
+    console.log(values);
+    const now = new Date().toISOString().slice(0, 10);
+    const yesteryear = new Date(new Date(now) - DAYLONG * 365)
+      .toISOString()
+      .slice(0, 10);
     return (
       <div
         id="calendar-board"
@@ -24,52 +41,13 @@ class CalendarBoard extends PureComponent {
       >
         <div className={classes.calendarWrap}>
           <CalendarHeatmap
-            startDate={new Date(new Date() - 31536000000)
-              .toISOString()
-              .slice(0, 10)}
-            endDate={new Date().toISOString().slice(0, 10)}
+            startDate={yesteryear}
+            endDate={now}
             showWeekdayLabels
-            weekdayLabels={[
-              '周日',
-              '周一',
-              '周二',
-              '周三',
-              '周四',
-              '周五',
-              '周六'
-            ]}
-            monthLabels={[
-              '一月',
-              '二月',
-              '三月',
-              '四月',
-              '五月',
-              '六月',
-              '七月',
-              '八月',
-              '九月',
-              '十月',
-              '十一月',
-              '十二月'
-            ]}
-            values={[
-              { date: '2018-01-01', count: 2 },
-              { date: '2018-01-22', count: 1 },
-              { date: '2018-01-30', count: 0 },
-              { date: '2018-01-31', count: 0 },
-              { date: '2018-12-01', count: 1 },
-              { date: '2018-12-02', count: 2 },
-              { date: '2018-12-03', count: 3 },
-              { date: '2018-12-04', count: 4 },
-              { date: '2018-12-05', count: 5 },
-              { date: '2018-12-31', count: 4 }
-            ]}
-            classForValue={value => {
-              if (!value) {
-                return 'color-empty';
-              }
-              return `color-fitnote-${value.count <= 4 ? value.count : 4}`;
-            }}
+            weekdayLabels={WEEKDAY}
+            monthLabels={MONTH}
+            values={values}
+            classForValue={this.renderCalendarCell}
             onClick={value => {
               if (value) {
                 alert(`Clicked on value with count: ${value.count}`);
@@ -85,6 +63,10 @@ class CalendarBoard extends PureComponent {
 CalendarBoard.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object
+};
+
+CalendarBoard.defaultProps = {
+  data: {}
 };
 
 export default withStyles(styles)(CalendarBoard);

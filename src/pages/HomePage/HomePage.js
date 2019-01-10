@@ -23,7 +23,7 @@ class HomePage extends Component {
     const { history } = this.state;
     return (
       <div className={classes.container}>
-        <CalendarBoard />
+        <CalendarBoard data={history} />
         {history && <ExpansionBoard data={history} />}
       </div>
     );
