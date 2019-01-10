@@ -60,7 +60,7 @@ class TrainingItemCard extends Component {
   };
 
   render() {
-    const { classes, data } = this.props;
+    const { classes, data, exhibition } = this.props;
     const { recordData, goalProgress, extraProgress } = this.state;
     return (
       <Card className={classes.container}>
@@ -68,13 +68,15 @@ class TrainingItemCard extends Component {
           <Typography variant="h6" gutterBottom>
             {data.name || '---'}
           </Typography>
-          <IconButton
-            className={classes.iconButton}
-            aria-label="add"
-            onClick={this.handleClickOpen}
-          >
-            <Add />
-          </IconButton>
+          {!exhibition && (
+            <IconButton
+              className={classes.iconButton}
+              aria-label="add"
+              onClick={this.handleClickOpen}
+            >
+              <Add />
+            </IconButton>
+          )}
         </div>
         <div className={classes.table}>
           <div className={classNames(classes.col, classes.tableHeader)}>
@@ -94,11 +96,13 @@ class TrainingItemCard extends Component {
           </div>
         </div>
         <ProgressBar goal={goalProgress} extra={extraProgress} />
-        <RecorderDialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          onSubmit={this.handleSubmit}
-        />
+        {!exhibition && (
+          <RecorderDialog
+            open={this.state.open}
+            onClose={this.handleClose}
+            onSubmit={this.handleSubmit}
+          />
+        )}
       </Card>
     );
   }
@@ -106,7 +110,8 @@ class TrainingItemCard extends Component {
 
 TrainingItemCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  data: PropTypes.object
+  data: PropTypes.object,
+  exhibition: PropTypes.bool
 };
 
 export default withStyles(styles)(TrainingItemCard);
