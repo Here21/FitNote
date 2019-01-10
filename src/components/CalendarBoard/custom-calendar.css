@@ -70,3 +70,23 @@
 .react-calendar-heatmap .color-gitlab-4 {
   fill: #254e77;
 }
+
+/*
+ * FitNote color scale
+ */
+
+.react-calendar-heatmap .color-fitnote-0 {
+  fill: #eeeeee;
+}
+.react-calendar-heatmap .color-fitnote-1 {
+  fill: #757575;
+}
+.react-calendar-heatmap .color-fitnote-2 {
+  fill: #616161;
+}
+.react-calendar-heatmap .color-fitnote-3 {
+  fill: #424242;
+}
+.react-calendar-heatmap .color-fitnote-4 {
+  fill: #212121;
+}

@@ -58,13 +58,17 @@ class CalendarBoard extends PureComponent {
               { date: '2018-01-30', count: 0 },
               { date: '2018-01-31', count: 0 },
               { date: '2018-12-01', count: 1 },
+              { date: '2018-12-02', count: 2 },
+              { date: '2018-12-03', count: 3 },
+              { date: '2018-12-04', count: 4 },
+              { date: '2018-12-05', count: 5 },
               { date: '2018-12-31', count: 4 }
             ]}
             classForValue={value => {
               if (!value) {
                 return 'color-empty';
               }
-              return `color-github-${value.count}`;
+              return `color-fitnote-${value.count <= 4 ? value.count : 4}`;
             }}
             onClick={value => {
               if (value) {
