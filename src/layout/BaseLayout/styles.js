@@ -40,7 +40,8 @@ const styles = theme => {
     content: {
       flexGrow: 1,
       padding: theme.spacing.unit * 3,
-      marginTop: theme.mixins.toolbar.minHeight
+      marginTop: theme.mixins.toolbar.minHeight,
+      width: '100%'
     }
   };
 };
