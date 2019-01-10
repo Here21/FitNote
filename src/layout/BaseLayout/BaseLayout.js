@@ -21,6 +21,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import InsertChart from '@material-ui/icons/InsertChart';
+import FitnessCenter from '@material-ui/icons/FitnessCenter';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import styles from './styles';
 import { Redirect, Route, Switch } from 'react-router-dom';
@@ -128,7 +130,9 @@ class BaseLayout extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleAccountLogout}>Logout</MenuItem>
+                  <MenuItem onClick={this.handleAccountLogout}>
+                    退出登录
+                  </MenuItem>
                 </Menu>
               </div>
             ) : (
@@ -158,7 +162,7 @@ class BaseLayout extends React.Component {
           <List>
             <ListItem button onClick={() => this.handleNavigate('/home')}>
               <ListItemIcon>
-                <InboxIcon />
+                <InsertChart />
               </ListItemIcon>
               <ListItemText primary={'训练历程'} />
             </ListItem>
@@ -170,7 +174,7 @@ class BaseLayout extends React.Component {
             </ListItem>
             <ListItem button onClick={() => this.handleNavigate('/training')}>
               <ListItemIcon>
-                <InboxIcon />
+                <FitnessCenter />
               </ListItemIcon>
               <ListItemText primary={'训练'} />
             </ListItem>
