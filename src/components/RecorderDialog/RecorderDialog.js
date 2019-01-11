@@ -10,18 +10,23 @@ import {
   Button
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { RegEx } from '../../constant/const';
 import styles from './styles';
 
 class RecorderDialog extends Component {
   state = {
     weight: 0,
-    set: 0
+    weightValid: true,
+    set: 1,
+    setValid: true
   };
 
   initState = () => {
     this.setState({
       weight: 0,
-      set: 0
+      weightValid: true,
+      set: 1,
+      setValid: true
     });
   };
 
@@ -37,12 +42,28 @@ class RecorderDialog extends Component {
 
   handleChange = name => event => {
     this.setState({
-      [name]: event.target.value && parseInt(event.target.value)
+      [name]: event.target.value
     });
   };
 
+  handleKeyup = name => event => {
+    this.setState({
+      [name + 'Valid']: true
+    });
+  };
+
+  handleCheckInput = name => event => {
+    const reg = name === 'weight' ? RegEx.WEIGHT : RegEx.SET;
+    if (!reg.test(event.target.value)) {
+      this.setState({
+        [name + 'Valid']: false
+      });
+    }
+  };
+
   render() {
-    const { classes, onClose, ...other } = this.props;
+    const { ...other } = this.props;
+    const { weight, weightValid, set, setValid } = this.state;
     return (
       <Dialog
         onClose={this.handleClose}
@@ -60,11 +81,18 @@ class RecorderDialog extends Component {
             margin="dense"
             label="重量(KG)："
             type="number"
+            step="0.5"
             min="0"
             max="300"
             fullWidth
-            value={this.state.weight}
+            error={!weightValid}
+            helperText={
+              !weightValid ? '输入格式为非负数，且最多只有小数点后两位' : ''
+            }
+            value={weight}
+            onKeyUp={this.handleKeyup('weight')}
             onChange={this.handleChange('weight')}
+            onBlur={this.handleCheckInput('weight')}
           />
           <TextField
             margin="dense"
@@ -74,13 +102,21 @@ class RecorderDialog extends Component {
             min="0"
             max="2000"
             fullWidth
-            value={this.state.set}
+            value={set}
+            error={!setValid}
+            helperText={!setValid ? '输入格式为非零正整数' : ''}
+            onKeyUp={this.handleKeyup('set')}
             onChange={this.handleChange('set')}
+            onBlur={this.handleCheckInput('set')}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>取消</Button>
-          <Button onClick={this.handleSubmit} color="primary">
+          <Button onClick={this.handleClose}>取消</Button>
+          <Button
+            onClick={this.handleSubmit}
+            color="primary"
+            disabled={!(weightValid && setValid)}
+          >
             提交
           </Button>
         </DialogActions>
