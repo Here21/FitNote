@@ -67,6 +67,10 @@ class TrainingItemCard extends Component {
         <div className={classes.header}>
           <Typography variant="h6" gutterBottom>
             {data.name || '---'}
+            <sup className={classes.supText}>
+              目标组数：
+              {data.goal}
+            </sup>
           </Typography>
           {!exhibition && (
             <IconButton

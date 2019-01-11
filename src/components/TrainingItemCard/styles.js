@@ -10,6 +10,11 @@ const styles = theme => {
       display: 'flex',
       justifyContent: 'space-between'
     },
+    supText: {
+      fontSize: '12px',
+      fontWeight: 300,
+      fontVariant: 'all-small-caps'
+    },
     iconButton: {
       margin: '-12px -12px 0 0px'
     },
