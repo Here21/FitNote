@@ -14,6 +14,11 @@ const styles = theme => {
       margin: 'auto',
       lineHeight: '100vh'
     },
+    button: {
+      position: 'absolute',
+      bottom: theme.spacing.unit * 2,
+      right: theme.spacing.unit * 2
+    },
     rightIcon: {
       marginLeft: theme.spacing.unit
     }

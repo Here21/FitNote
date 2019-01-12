@@ -36,7 +36,7 @@ class TrainingPage extends Component {
     if (data.length === 0) {
       return (
         <div className={classes.message}>
-          您还没有添加今天的运动计划，去动作库中添加吧
+          您还没有添加运动计划，去动作库中添加吧
         </div>
       );
     }

@@ -8,11 +8,11 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem,
-  FormControlLabel,
-  FormLabel,
-  RadioGroup,
-  Radio
+  MenuItem
+  // FormControlLabel,
+  // FormLabel,
+  // RadioGroup,
+  // Radio
 } from '@material-ui/core';
 import styles from './styles';
 import ActionService from '../../../service/ActionService';
@@ -95,27 +95,27 @@ class ActionEditor extends Component {
                 <MenuItem value={6}>核心</MenuItem>
               </Select>
             </FormControl>
-            <FormControl
-              component="fieldset"
-              className={classes.formControl}
-              fullWidth
-            >
-              <FormLabel component="legend">记录</FormLabel>
-              <RadioGroup
-                aria-label="record"
-                name="record"
-                className={classes.group}
-                value={this.state.record}
-                onChange={this.handleChange}
-              >
-                <FormControlLabel
-                  value="1"
-                  control={<Radio />}
-                  label="重量&组数"
-                />
-                <FormControlLabel value="2" control={<Radio />} label="时间" />
-              </RadioGroup>
-            </FormControl>
+            {/*<FormControl*/}
+            {/*component="fieldset"*/}
+            {/*className={classes.formControl}*/}
+            {/*fullWidth*/}
+            {/*>*/}
+            {/*<FormLabel component="legend">记录</FormLabel>*/}
+            {/*<RadioGroup*/}
+            {/*aria-label="record"*/}
+            {/*name="record"*/}
+            {/*className={classes.group}*/}
+            {/*value={this.state.record}*/}
+            {/*onChange={this.handleChange}*/}
+            {/*>*/}
+            {/*<FormControlLabel*/}
+            {/*value="1"*/}
+            {/*control={<Radio />}*/}
+            {/*label="重量&组数"*/}
+            {/*/>*/}
+            {/*<FormControlLabel value="2" control={<Radio />} label="时间" />*/}
+            {/*</RadioGroup>*/}
+            {/*</FormControl>*/}
             <div className={classes.buttonGroup}>
               <Button
                 variant="contained"
