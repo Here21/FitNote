@@ -15,23 +15,35 @@ class ActionsPage extends Component {
     data: [],
     open: false
   };
+
   handleAdd = () => {
     let { history } = this.props;
     history.push('/actions/add');
   };
 
   componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData = () => {
     ActionService.get().then(res => {
       this.setState({
         data: res.data
       });
     });
-  }
+  };
 
   handleAddToTraining = value => {
     this.setState({
       open: true,
       actionId: value
+    });
+  };
+
+  handleRemove = id => {
+    ActionService.remove(id).then(res => {
+      Notify.success(res.message);
+      this.fetchData();
     });
   };
 
@@ -61,6 +73,7 @@ class ActionsPage extends Component {
             key={item.id}
             data={item}
             add={this.handleAddToTraining}
+            remove={this.handleRemove}
           />
         ))}
         <SetGoalDialog

@@ -16,6 +16,16 @@ const styles = theme => {
       marginBottom: theme.spacing.unit * 2,
       marginLeft: 0,
       marginRight: 0
+    },
+    contentWrap: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      height: '100%'
+    },
+    actions: {
+      alignItems: 'flex-end'
     }
   };
 };

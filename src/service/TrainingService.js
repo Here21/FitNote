@@ -16,6 +16,9 @@ class TrainingService extends BaseService {
   complete() {
     return super.put('/training/complete-all');
   }
+  remove(id) {
+    return super.delete(`/training/${id}`);
+  }
 }
 
 export default new TrainingService();

@@ -7,6 +7,9 @@ class ActionService extends BaseService {
   get() {
     return super.get('/action');
   }
+  remove(id) {
+    return super.delete(`/action/${id}`);
+  }
 }
 
 export default new ActionService();
