@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Paper,
-  Typography,
-  Button,
-  IconButton,
-  Menu,
-  MenuItem
-} from '@material-ui/core';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Paper, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import styles from './styles';
+import DropDownMenu from '../DropDownMenu';
 import { PART } from '../../constant/const';
 
 class ActionCard extends Component {
   state = {
-    INNER_WIDTH: window.innerWidth,
-    anchorEl: null
+    INNER_WIDTH: window.innerWidth
   };
   componentDidMount() {
     window.addEventListener('resize', this.onWindowResize);
@@ -30,19 +22,12 @@ class ActionCard extends Component {
       INNER_WIDTH: event.target.innerWidth
     });
   };
-  handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-  handleRemove = id => () => {
-    this.handleClose();
-    this.props.remove(id);
+  handleRemove = () => {
+    this.props.remove(this.props.data.id);
   };
   render() {
     const { classes, data, add } = this.props;
-    const { INNER_WIDTH, anchorEl } = this.state;
+    const { INNER_WIDTH } = this.state;
 
     return (
       <Paper
@@ -61,21 +46,7 @@ class ActionCard extends Component {
           </Typography>
         </div>
         <div className={classNames(classes.contentWrap, classes.actions)}>
-          <IconButton
-            aria-owns={anchorEl ? 'dropdown-menu' : undefined}
-            aria-haspopup="true"
-            onClick={this.handleClick}
-          >
-            <MoreVertIcon />
-          </IconButton>
-          <Menu
-            id="dropdown-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={this.handleClose}
-          >
-            <MenuItem onClick={this.handleRemove(data.id)}>删除</MenuItem>
-          </Menu>
+          <DropDownMenu remove={this.handleRemove} />
           <Button size="small" color="primary" onClick={() => add(data.id)}>
             加入训练
           </Button>
