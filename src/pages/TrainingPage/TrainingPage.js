@@ -13,12 +13,15 @@ class TrainingPage extends Component {
     data: []
   };
   componentDidMount() {
+    this.fetchData();
+  }
+  fetchData = () => {
     TrainingService.get().then(res => {
       this.setState({
         data: res.data
       });
     });
-  }
+  };
   completeTraining = () => {
     TrainingService.complete()
       .then(res => {
@@ -30,6 +33,13 @@ class TrainingPage extends Component {
         console.log(err);
       });
   };
+  handleRemove = id => {
+    TrainingService.remove(id).then(res => {
+      Notify.success(res.message);
+      this.fetchData();
+    });
+  };
+
   render() {
     const { classes } = this.props;
     const { data } = this.state;
@@ -43,7 +53,11 @@ class TrainingPage extends Component {
     return (
       <div className={classes.container}>
         {data.map(item => (
-          <TrainingItemCard key={item.id} data={item} />
+          <TrainingItemCard
+            key={item.id}
+            data={item}
+            remove={this.handleRemove}
+          />
         ))}
         <Button
           variant="contained"

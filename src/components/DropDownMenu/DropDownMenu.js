@@ -20,6 +20,7 @@ class DropDownMenu extends PureComponent {
     this.props.remove();
   };
   render() {
+    const { remove, ...other } = this.props;
     const { anchorEl } = this.state;
     return (
       <React.Fragment>
@@ -27,6 +28,7 @@ class DropDownMenu extends PureComponent {
           aria-owns={anchorEl ? 'dropdown-menu' : undefined}
           aria-haspopup="true"
           onClick={this.handleClick}
+          {...other}
         >
           <MoreVertIcon />
         </IconButton>

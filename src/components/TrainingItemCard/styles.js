@@ -8,7 +8,8 @@ const styles = theme => {
     },
     header: {
       display: 'flex',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      alignItems: 'center'
     },
     supText: {
       fontSize: '12px',
@@ -16,7 +17,7 @@ const styles = theme => {
       fontVariant: 'all-small-caps'
     },
     iconButton: {
-      margin: '-12px -12px 0 0px'
+      margin: '0 -12px 0 0px'
     },
     table: {
       display: 'flex',
@@ -43,6 +44,9 @@ const styles = theme => {
       minWidth: '20px',
       maxWidth: '40px',
       width: '100%'
+    },
+    test: {
+      margin: '-12px -12px 0 0px'
     }
   };
 };

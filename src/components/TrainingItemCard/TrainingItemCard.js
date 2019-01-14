@@ -8,6 +8,7 @@ import RecorderDialog from '../RecorderDialog';
 import PropTypes from 'prop-types';
 import RecorderService from '../../service/RecorderService';
 import ProgressBar from './ProgressBar';
+import DropDownMenu from '../DropDownMenu';
 
 class TrainingItemCard extends Component {
   state = {
@@ -40,7 +41,6 @@ class TrainingItemCard extends Component {
     const { data } = this.props;
     this.fetchData(data.id);
   }
-
   fetchData = id => {
     const { data } = this.props;
     RecorderService.getTrainingRecord(id).then(res => {
@@ -58,6 +58,10 @@ class TrainingItemCard extends Component {
       }
     });
   };
+  handleRemove = () => {
+    const { data, remove } = this.props;
+    remove(data.id);
+  };
 
   render() {
     const { classes, data, exhibition } = this.props;
@@ -73,13 +77,7 @@ class TrainingItemCard extends Component {
             </sup>
           </Typography>
           {!exhibition && (
-            <IconButton
-              className={classes.iconButton}
-              aria-label="add"
-              onClick={this.handleClickOpen}
-            >
-              <Add />
-            </IconButton>
+            <DropDownMenu className={classes.test} remove={this.handleRemove} />
           )}
         </div>
         <div className={classes.table}>
@@ -98,6 +96,15 @@ class TrainingItemCard extends Component {
               </div>
             ))}
           </div>
+          {!exhibition && (
+            <IconButton
+              className={classes.iconButton}
+              aria-label="add"
+              onClick={this.handleClickOpen}
+            >
+              <Add />
+            </IconButton>
+          )}
         </div>
         <ProgressBar goal={goalProgress} extra={extraProgress} />
         {!exhibition && (
@@ -115,7 +122,8 @@ class TrainingItemCard extends Component {
 TrainingItemCard.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.object,
-  exhibition: PropTypes.bool
+  exhibition: PropTypes.bool,
+  remove: PropTypes.func
 };
 
 export default withStyles(styles)(TrainingItemCard);
