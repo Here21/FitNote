@@ -19,8 +19,12 @@ class DropDownMenu extends PureComponent {
     this.handleClose();
     this.props.remove();
   };
+  handleBackout = () => {
+    this.handleClose();
+    this.props.backout();
+  };
   render() {
-    const { remove, ...other } = this.props;
+    const { remove, backout, ...other } = this.props;
     const { anchorEl } = this.state;
     return (
       <React.Fragment>
@@ -38,7 +42,8 @@ class DropDownMenu extends PureComponent {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleRemove}>删除</MenuItem>
+          {backout && <MenuItem onClick={this.handleBackout}>撤销</MenuItem>}
+          {remove && <MenuItem onClick={this.handleRemove}>删除</MenuItem>}
         </Menu>
       </React.Fragment>
     );
@@ -46,7 +51,8 @@ class DropDownMenu extends PureComponent {
 }
 
 DropDownMenu.propTypes = {
-  remove: PropTypes.func
+  remove: PropTypes.func,
+  backout: PropTypes.func
 };
 
 export default DropDownMenu;

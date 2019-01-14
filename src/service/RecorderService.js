@@ -7,6 +7,9 @@ class RecorderService extends BaseService {
   getTrainingRecord(id) {
     return super.get(`/t_record/${id}`);
   }
+  remove(id) {
+    return super.delete(`/t_record/${id}`);
+  }
 }
 
 export default new RecorderService();

@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import RecorderService from '../../service/RecorderService';
 import ProgressBar from './ProgressBar';
 import DropDownMenu from '../DropDownMenu';
+import Notify from '../../utils/Notify';
 
 class TrainingItemCard extends Component {
   state = {
@@ -62,6 +63,14 @@ class TrainingItemCard extends Component {
     const { data, remove } = this.props;
     remove(data.id);
   };
+  handleBackout = () => {
+    const { recordData } = this.state;
+    const lastOne = recordData[recordData.length - 1];
+    RecorderService.remove(lastOne.id).then(res => {
+      this.fetchData(this.props.data.id);
+      Notify.success(res.message);
+    });
+  };
 
   render() {
     const { classes, data, exhibition } = this.props;
@@ -77,7 +86,11 @@ class TrainingItemCard extends Component {
             </sup>
           </Typography>
           {!exhibition && (
-            <DropDownMenu className={classes.test} remove={this.handleRemove} />
+            <DropDownMenu
+              className={classes.test}
+              remove={this.handleRemove}
+              backout={recordData.length > 0 ? this.handleBackout : null}
+            />
           )}
         </div>
         <div className={classes.table}>
