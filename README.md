@@ -1,6 +1,6 @@
 # FitNote
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+FitNote为了帮助健身人群记录训练过程，可视化追踪力量成长的轨迹。
 
 ## Dev Guide
 
