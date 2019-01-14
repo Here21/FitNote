@@ -7,6 +7,20 @@ const styles = theme => {
       justifyContent: 'center',
       alignItems: 'center'
     },
+    header: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    logo: {
+      width: '90px',
+      height: '90px',
+      objectFit: 'contain'
+    },
+    title: {
+      marginBottom: 0,
+      marginLeft: theme.spacing.unit * 2
+    },
     content: {
       padding: theme.spacing.unit * 2,
       margin: theme.spacing.unit * 2,

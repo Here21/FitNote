@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Paper, TextField, Button } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 import withRoot from '../../withRoot';
 import styles from './styles';
 import UserService from '../../service/UserService';
 import Notify from '../../utils/Notify';
+import logo from '../../assets/fitnote_icon.png';
 
 class UserLayout extends React.Component {
   state = {
@@ -37,7 +39,12 @@ class UserLayout extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
-        <h1>FIT NOTE</h1>
+        <div className={classes.header}>
+          <img src={logo} alt="logo" className={classes.logo} />
+          <Typography variant="h4" gutterBottom className={classes.title}>
+            FitNote
+          </Typography>
+        </div>
         <Paper elevation={1} className={classes.content}>
           <form noValidate onSubmit={this.handleSubmit} autoComplete="off">
             <TextField
