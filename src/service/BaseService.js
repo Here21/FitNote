@@ -2,7 +2,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import C from '../constant/const';
 import { deleteCookie } from '../utils/cookie';
-import { proxy } from '../config/config';
+import { proxy } from '../config';
 import Notify from '../utils/Notify';
 
 export class BaseService {
