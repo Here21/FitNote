@@ -187,7 +187,7 @@ class BaseLayout extends React.Component {
             <Route path="/actions/add" exact component={ActionEditor} />
             <Route path="/actions/:id" exact component={ActionsPage} />
             <Route path="/training" component={TrainingPage} />
-            <Redirect to="/404" />
+            <Redirect to="/home" />
           </Switch>
         </div>
       </div>
