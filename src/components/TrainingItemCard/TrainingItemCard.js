@@ -122,9 +122,10 @@ class TrainingItemCard extends Component {
         <ProgressBar goal={goalProgress} extra={extraProgress} />
         {!exhibition && (
           <RecorderDialog
+            title={data.name}
             open={this.state.open}
-            onClose={this.handleClose}
-            onSubmit={this.handleSubmit}
+            close={this.handleClose}
+            submit={this.handleSubmit}
           />
         )}
       </Card>

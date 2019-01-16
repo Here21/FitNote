@@ -31,12 +31,12 @@ class RecorderDialog extends Component {
   };
 
   handleClose = () => {
-    this.props.onClose();
+    this.props.close();
     this.initState();
   };
 
   handleSubmit = () => {
-    this.props.onSubmit(this.state);
+    this.props.submit(this.state);
     this.initState();
   };
 
@@ -62,15 +62,15 @@ class RecorderDialog extends Component {
   };
 
   render() {
-    const { ...other } = this.props;
+    const { title, open } = this.props;
     const { weight, weightValid, set, setValid } = this.state;
     return (
       <Dialog
         onClose={this.handleClose}
         aria-labelledby="simple-dialog-title"
-        {...other}
+        open={open}
       >
-        <DialogTitle id="form-dialog-title">动作名称</DialogTitle>
+        <DialogTitle id="form-dialog-title">{title}</DialogTitle>
         <DialogContent>
           <DialogContentText>
             输入相对应的数据，提交后生成单次记录
@@ -127,7 +127,10 @@ class RecorderDialog extends Component {
 
 RecorderDialog.propTypes = {
   classes: PropTypes.object.isRequired,
-  onClose: PropTypes.func
+  close: PropTypes.func,
+  open: PropTypes.bool,
+  submit: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default withStyles(styles)(RecorderDialog);
