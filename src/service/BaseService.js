@@ -4,6 +4,7 @@ import C from '../constant/const';
 import { deleteCookie } from '../utils/cookie';
 import { proxy } from '../config';
 import Notify from '../utils/Notify';
+import logger from '../utils/logger';
 
 export class BaseService {
   constructor() {
@@ -26,8 +27,7 @@ export class BaseService {
 
   axios(method, url, data) {
     return new Promise((resolve, reject) => {
-      // TODO: production 环境注释这里的 console
-      console.log('🚀 http request: ', method, url, data);
+      logger.info('🚀 http request: ', method, url, data);
       this.$http[method](url, data)
         .then(function(resp) {
           const data = resp.data;
@@ -41,14 +41,14 @@ export class BaseService {
             if (_.get(data, 'errorCode') === C.ERROR_CODE.TOKEN_ERROR) {
               deleteCookie('token');
             }
-            console.warn('💣 request warning: ', data);
+            logger.warn('💣 request warning: ', data);
             reject(data);
           }
           resolve(resp.data);
         })
         .catch(function(error) {
           Notify.info(C.ERROR_CODE.DESC[C.ERROR_CODE.SYSTEM_ERROR]);
-          console.warn('🐞 request error: ', error);
+          logger.warn('🐞 request error: ', error);
           reject(error);
         });
     });

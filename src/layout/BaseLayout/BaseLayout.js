@@ -130,7 +130,16 @@ class BaseLayout extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleAccountLogout}>帮助</MenuItem>
+                  <MenuItem>
+                    <a href="https://github.com/Here21/FitNote/blob/master/docs/Instruction.md">
+                      帮助
+                    </a>
+                  </MenuItem>
+                  <MenuItem>
+                    <a href="https://github.com/Here21/FitNote/issues">
+                      问题反馈
+                    </a>
+                  </MenuItem>
                   <MenuItem onClick={this.handleAccountLogout}>
                     退出登录
                   </MenuItem>
