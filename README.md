@@ -2,6 +2,12 @@
 
 FitNote为了帮助健身人群记录训练过程，可视化追踪力量成长的轨迹。
 
+## Guide
+
+参考[这里](./docs/Instruction.md)。
+
+[问题反馈](https://github.com/Here21/FitNote/issues)
+
 ## Dev Guide
 
 请在`commit message`的最前面添加[xxx] 前缀，以下是目前的几种前缀含义:
