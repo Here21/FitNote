@@ -13,6 +13,10 @@ FitNote可以像原生应用一样添加到手机App中，无需下载。
 - 部分使用Chrome的安卓手机支持。
 - 小米手机支持。
 
+浏览器打开[https://fitnote.inhere.top/](https://fitnote.inhere.top/)
+
+![兼容性](./images/homepage.jpeg)
+
 1. 登录
 
 **注意：**目前版本暂时未对外开放，如有需要请联系我开通内测版账号。

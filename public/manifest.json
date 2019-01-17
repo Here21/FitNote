@@ -8,6 +8,16 @@
       "type": "image/x-icon"
     },
     {
+      "src": "fitnote.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "fitnote.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
       "src": "fitnote.png",
       "sizes": "144x144",
       "type": "image/png"
