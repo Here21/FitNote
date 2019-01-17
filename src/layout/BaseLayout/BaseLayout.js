@@ -130,6 +130,7 @@ class BaseLayout extends React.Component {
                   open={!!anchorEl}
                   onClose={this.handleClose}
                 >
+                  <MenuItem onClick={this.handleAccountLogout}>帮助</MenuItem>
                   <MenuItem onClick={this.handleAccountLogout}>
                     退出登录
                   </MenuItem>
