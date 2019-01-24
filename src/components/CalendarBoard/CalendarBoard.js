@@ -49,7 +49,7 @@ class CalendarBoard extends PureComponent {
             classForValue={this.renderCalendarCell}
             onClick={value => {
               if (value) {
-                alert(`Clicked on value with count: ${value.count}`);
+                alert(`训练项目数量: ${value.count}`);
               }
             }}
           />

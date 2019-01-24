@@ -16,7 +16,7 @@ export class BaseService {
       // 如果请求话费了超过 `timeout` 的时间，请求将被中断
       timeout: 5000,
       // `withCredentials` 表示跨域请求时是否需要使用凭证, 是否携带cookies发起请求
-      // withCredentials: true, // TODO: 正式环境使用 Nginx 转发，不存在跨域问题，正式环境设置该值为 false
+      withCredentials: true, // TODO: 正式环境使用 Nginx 转发，不存在跨域问题，正式环境设置该值为 false
       // `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。如果 `validateStatus`
       // 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 reject
       validateStatus: status => {

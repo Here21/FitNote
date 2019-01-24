@@ -32,7 +32,6 @@ class ExpansionBoard extends PureComponent {
               return item['part'];
             })
           );
-          console.log(parts);
           return (
             <ExpansionPanel
               key={item[0]}
