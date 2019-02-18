@@ -41,6 +41,7 @@ const styles = theme => {
       flexGrow: 1,
       padding: theme.spacing.unit * 2,
       marginTop: theme.mixins.toolbar.minHeight,
+      marginBottom: theme.mixins.toolbar.minHeight,
       width: '100%'
     }
   };
