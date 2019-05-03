@@ -31,6 +31,7 @@ import HomePage from '../../pages/HomePage';
 import TrainingPage from '../../pages/TrainingPage';
 import ActionEditor from '../../pages/ActionsPage/ActionEditor';
 import { checkCookie, deleteCookie } from '../../utils/cookie';
+import ActionFolder from "../../pages/ActionsPage/ActionFolder";
 
 class BaseLayout extends React.Component {
   state = {
@@ -195,6 +196,7 @@ class BaseLayout extends React.Component {
             <Route path="/home" exact component={HomePage} />
             <Route path="/actions" exact component={ActionsPage} />
             <Route path="/actions/add" exact component={ActionEditor} />
+            <Route path="/actions/list" exact component={ActionFolder} />
             <Route path="/actions/:id" exact component={ActionsPage} />
             <Route path="/training" component={TrainingPage} />
             <Redirect to="/home" />

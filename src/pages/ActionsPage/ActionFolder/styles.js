@@ -3,6 +3,9 @@ const styles = theme => {
     container: {
       height: '100%'
     },
+    card: {
+
+    }
   };
 };
 

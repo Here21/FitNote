@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -25,14 +29,16 @@ class ActionFolder extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
-        <List component="nav">
-          <ListItem button>
-            <ListItemText primary="Inbox" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Drafts" />
-          </ListItem>
-        </List>
+        <Card>
+          <CardContent>
+            <Typography variant="h5" component="h2">
+              胸部计划
+            </Typography>
+            <Typography component="p">
+              well meaning and kindly.
+            </Typography>
+          </CardContent>
+        </Card>
       </div>
     );
   }
