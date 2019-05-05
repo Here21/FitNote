@@ -45,6 +45,10 @@ class DropDownMenu extends PureComponent {
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
         >
           {backout && <MenuItem onClick={this.handleBackout}>撤销</MenuItem>}
           {edit && <MenuItem onClick={this.handleEdit}>编辑</MenuItem>}

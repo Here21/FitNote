@@ -15,13 +15,16 @@ class PlanFolderCard extends Component {
   handleRemove = () => {
     this.props.remove(this.props.data.id);
   };
+  handleEdit = () => {
+  //
+  }
   render() {
     const { classes, data, add } = this.props;
 
     return (
       <Card className={classNames(classes.container)}>
         <CardHeader
-          action={<DropDownMenu remove={this.handleRemove} />}
+          action={<DropDownMenu edit={this.handleEdit} remove={this.handleRemove} />}
           title={
             <Typography variant="h6" gutterBottom>
               Name
