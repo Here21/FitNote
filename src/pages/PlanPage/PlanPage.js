@@ -6,6 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 import styles from './styles';
 import { ActionService, TrainingService } from '../../service';
 import Notify from '../../utils/Notify';
+import PlanFolderCard from '../../components/PlanFolderCard';
 
 class PlanPage extends Component {
   state = {
@@ -65,6 +66,10 @@ class PlanPage extends Component {
     const { data, open } = this.state;
     return (
       <div className={classes.container}>
+        <PlanFolderCard />
+        <PlanFolderCard />
+        <PlanFolderCard />
+        <PlanFolderCard />
         <Fab
           color="secondary"
           aria-label="Add"

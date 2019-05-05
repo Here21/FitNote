@@ -8449,6 +8449,11 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
+prettier@1.17.0:
+  version "1.17.0"
+  resolved "https://registry.npm.taobao.org/prettier/download/prettier-1.17.0.tgz#53b303676eed22cc14a9f0cec09b477b3026c008"
+  integrity sha1-U7MDZ27tIswUqfDOwJtHezAmwAg=
+
 pretty-bytes@^5.1.0:
   version "5.1.0"
   resolved "http://registry.npm.taobao.org/pretty-bytes/download/pretty-bytes-5.1.0.tgz#6237ecfbdc6525beaef4de722cc60a58ae0e6c6d"
