@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import styles from './styles';
 import Notify from '../../../utils/Notify';
+import ActionTable from '../../../components/ActionTable';
 
 class PlanDetail extends Component {
   state = {
@@ -23,6 +24,7 @@ class PlanDetail extends Component {
             There is description of training plan.
           </Typography>
         </Paper>
+        <ActionTable />
       </div>
     );
   }
