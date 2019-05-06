@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Typography, Button, CardContent, CardHeader } from '@material-ui/core';
+import {
+  Card,
+  Typography,
+  Button,
+  CardContent,
+  CardHeader,
+  CardActions
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import styles from './styles';
@@ -16,31 +23,34 @@ class PlanFolderCard extends Component {
     this.props.remove(this.props.data.id);
   };
   handleEdit = () => {
-  //
-  }
+    //
+  };
   render() {
     const { classes, data, add } = this.props;
 
     return (
       <Card className={classNames(classes.container)}>
         <CardHeader
-          action={<DropDownMenu edit={this.handleEdit} remove={this.handleRemove} />}
+          className={classNames(classes.headerRoot)}
+          action={
+            <DropDownMenu edit={this.handleEdit} remove={this.handleRemove} />
+          }
           title={
             <Typography variant="h6" gutterBottom>
               Name
             </Typography>
           }
         />
-        <CardContent>
+        <CardContent className={classes.contentRoot}>
           <Typography variant="caption" gutterBottom>
             Desc
           </Typography>
         </CardContent>
-        <div className={classNames(classes.contentWrap, classes.actions)}>
-          <Button size="small" color="primary" onClick={() => add(data.id)}>
+        <CardActions className={classes.actionsRoot} disableActionSpacing>
+          <Button size="small" onClick={() => add(data.id)}>
             加入训练
           </Button>
-        </div>
+        </CardActions>
       </Card>
     );
   }
