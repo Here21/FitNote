@@ -6,6 +6,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
@@ -15,7 +18,11 @@ const styles = theme => ({
     overflowX: 'auto'
   },
   table: {
-    minWidth: 700
+    // minWidth: 700
+  },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 });
 
@@ -38,14 +45,19 @@ function ActionTable(props) {
 
   return (
     <Paper className={classes.root}>
+      <Toolbar className={classes.toolbar}>
+        <Typography variant="h5" color="inherit" className={classes.grow}>
+          Name
+        </Typography>
+        <Button color="secondary" variant="contained" size="small">
+          开始训练
+        </Button>
+      </Toolbar>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
             <TableCell>Dessert (100g serving)</TableCell>
             <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat (g)</TableCell>
-            <TableCell align="right">Carbs (g)</TableCell>
-            <TableCell align="right">Protein (g)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,9 +67,6 @@ function ActionTable(props) {
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
             </TableRow>
           ))}
         </TableBody>
